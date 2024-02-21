@@ -6,7 +6,7 @@ function Navbar() {
 
     return(
         <>
-            <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-[#278198]">
+            <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-[#278198] z-50">
                 <a href="#" className="md:order-2 order-1 text-3xl md:text-5xl grid grid-cols-2 md:block justify-items-stretch">
                     <div className="flex justify-center md:mt-1 ml-8 md:ml-10">
                         <img src={ 'images/logo.png' } alt="Logo" width={250} className=""/>
@@ -20,10 +20,10 @@ function Navbar() {
                         <a className="text-xl" to="/">Home</a>
                     </li>
                     <li>
-                        <a className="text-xl" to="/blogs">Blogs</a>
+                        <a className="text-xl" to="/adsVideo">Ads Video</a>
                     </li>
                     <li>
-                        <a className="text-xl" to="/contact">Contact</a>
+                        <a className="text-xl" to="/videoServices">Video Services</a>
                     </li>
                 </ul>
                 <div id="profile" className={showNav ? "order-4 md:order-3 p-2 md:pl-0" : "hidden md:block md:order-3 p-2 md:pl-0"}>
