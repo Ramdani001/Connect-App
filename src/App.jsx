@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import Main from './landingPage/Main'
+import React, { Suspense } from 'react';
+import LandingPage from './landingPage/LandingPage';
+import Loading from './landingPage/component/Loading';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Main />
-    </>
+    <Suspense fallback={<Loading />}>
+        <LandingPage />
+    </Suspense>
   )
 }
 

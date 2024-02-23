@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    backgroundPosition: {
+      'bottom-4': 'center bottom 10rem'
+    },
     extend: {},
   },
   plugins: [],

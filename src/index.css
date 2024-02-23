@@ -12,3 +12,9 @@
     background-color: #0300A390;
     transform: translate(-30px, -10px);
 }
+
+#buttonContact:hover{
+    border: 3px solid #1d1b9e;
+    box-shadow: 4px 4px 30px #07b0ff ;
+    box-sizing: border-box;
+}
