@@ -18,3 +18,9 @@
     box-shadow: 4px 4px 30px #07b0ff ;
     box-sizing: border-box;
 }
+
+.active{
+    font-style: bold;
+    background-color: red;
+    color: white;
+}

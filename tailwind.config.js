@@ -6,9 +6,14 @@ export default {
   ],
   theme: {
     backgroundPosition: {
-      'bottom-4': 'center bottom 10rem'
+      'bottom-4': 'center bottom 10rem',
+      'top-4': 'center top 10rem'
     },
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '400px',
+      },
+    },
   },
   plugins: [],
 }

@@ -8,7 +8,7 @@ function Navbar() {
     return(
         <>
             <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-[#278198] z-50">
-                <Link to="#heroSection" onClick={() => {
+                <Link to="/" onClick={() => {
                             window.scrollTo(0, 0);
                         }
                     }
@@ -22,17 +22,17 @@ function Navbar() {
                     </div> 
                 </Link>
                 <ul className={showNav ? "opacity-1 transition-all duration-1000 ease-in flex flex-col text-left gap-3 md:text-center md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0" : "hidden md:text-center md:flex md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0"}>
-                    <Link to="#heroSection" onClick={() => {
+                    <Link to="/" onClick={() => {
                             window.scrollTo(0, 0);
                         }}
                         className="text-xl"
                     >
                         Home
                     </Link>
-                    <Link to="#sd">
+                    <Link to="/Gallery">
                          Ads Video
                     </Link>
-                    <Link>
+                    <Link to="/Gallery">
                          Video Services
                     </Link>
                 </ul>

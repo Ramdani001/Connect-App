@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HeroSection() {
+export default function HeroSection() { 
     return( 
         <div id="heroSection" className="h-screen w-full bg-gray-200 grid grid-cols-1 lg:grid-cols-2 items-center">
             <div className="mt-20 md:p-14 text-center">
