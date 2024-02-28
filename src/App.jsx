@@ -1,15 +1,18 @@
 import React, { Suspense } from 'react';
-import LandingPage from './landingPage/LandingPage';
 import Loading from './landingPage/component/Loading';
 import Navbar from './landingPage/component/Navbar';
 import Footer from './landingPage/component/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Gallery from './landingPage/Gallery';
+import { lazy } from 'react';
+
+const LandingPage = lazy(() => import('./landingPage/LandingPage'));
+const Gallery = lazy(() => import('./landingPage/Gallery'));
 
 function App() {
   return (
     <>
-        <Suspense fallback={Loading}>
+    {/* <Loading /> */}
+        <Suspense fallback={<Loading />}>
           <Router>
             <Navbar />
               <Routes>

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HeroSection() { 
     return( 
-        <div id="heroSection" className="h-screen w-full bg-gray-200 grid grid-cols-1 lg:grid-cols-2 items-center">
+        <div id="heroSection" className="h-screen w-full bg-[url('images/2.jpg')] bg-no-repeat bg-cover grid grid-cols-1 lg:grid-cols-2 items-center">
             <div className="mt-20 md:p-14 text-center">
                 <div className="p-2 rounded-md ">
                     <h1 className="text-2xl md:text-5xl mb-2">EDITING VIDEO</h1>

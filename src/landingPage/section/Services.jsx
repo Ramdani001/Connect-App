@@ -31,7 +31,7 @@ export default function Services() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam qui ab, soluta voluptatum fugiat voluptas quod itaque est voluptate quasi.
                     </p>
                 </div>
-                <div className="w-full h-ful p-5 grid place-items-center">
+                <div className="w-full h-ful p-5 grid place-items-center border-2 rounded shadow">
                     <img src={'images/services1.png'} alt="Services 1" />
                 </div>
             </div>
@@ -63,7 +63,7 @@ export default function Services() {
                     </p>
                 </div>
                 <div className="w-full h-ful p-5 grid place-items-center order-2 md:order-1">
-                    <img src={'images/services2.png'} alt="Services 2" />
+                    <img src={'images/services2.png'} alt="Services 2" className="border-2 shadow"/>
                 </div>
             </div>
 

@@ -7,10 +7,10 @@ function Navbar() {
  
     return(
         <>
-            <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-[#278198] z-50">
+            <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-primary z-50">
                 <Link to="/" onClick={() => {
                             window.scrollTo(0, 0);
-                        }
+                        } 
                     }
                     
                     className="md:order-2 order-1 text-3xl md:text-5xl grid grid-cols-2 md:block justify-items-stretch">
