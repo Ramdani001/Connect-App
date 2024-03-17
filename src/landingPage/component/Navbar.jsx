@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 function Navbar() {
 
     const [showNav, setShowNav] = useState(false);
- 
+
+    const [showDropdown, setShowDropdown] = useState(false);
+  
     return(
         <>
             <nav className="grid grid-cols-1 md:grid-cols-3 text-center pt-1 text-white fixed top-0 w-full md:h-14 shadow-md bg-primary z-50">
@@ -32,16 +34,29 @@ function Navbar() {
                     <Link to="/Gallery">
                          Ads Video
                     </Link>
-                    <Link to="/Gallery">
+                    <Link to="/Gallery"> 
                          Video Services
                     </Link>
                 </ul>
                 <div id="profile" className={showNav ? "order-4 md:order-3 p-2 md:pl-0" : "hidden md:block md:order-3 p-2 md:pl-0"}>
-                    <div className="flex md:justify-end md:pr-8 items-center gap-3">
+                    <div className="flex md:justify-end md:pr-8 items-center gap-3 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)}>
                         <h4 className="text-xl">Rizkan Ramdani</h4>
                         <div className="w-7 h-7 bg-gray-600 rounded-full">
 
                         </div>
+                    </div>
+                    <div id="showDrop" className={showDropdown ? "flex justify-end duration-1000 transition-all translate-y-0 opacity-100" : "flex justify-end  -translate-y-52 opacity-10 duration-1000 transition-all"}>
+                        <section className="text-start mr-16 w-[50%] border p-2 bg-primary border-none shadow-md rounded">
+                            <Link to="/profile">
+                                <div className="border p-1 rounded mt-2">
+                                    <h4>Profile</h4>
+                                </div>
+                            </Link> 
+                            <hr className="my-3" />
+                            <div className="p-1">
+                                <h4>Logout</h4>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </nav>

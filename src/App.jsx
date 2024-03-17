@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react';
+import React, {  Suspense } from 'react';
 import Loading from './landingPage/component/Loading';
 import Navbar from './landingPage/component/Navbar';
 import Footer from './landingPage/component/Footer';
+import Profile from './landingPage/pages/Profile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
@@ -21,6 +22,7 @@ function App() {
                 <Route path='/videoFacebook' element={<Gallery type={"videoFacebook"} />}></Route>
                 <Route path='/instaStory' element={<Gallery type={"instaStory"} />}></Route>
                 <Route path='/videoYoutube' element={<Gallery type={"videoYoutube"} />}></Route>
+                <Route path='/Profile' element={<Profile type={"Profile"} />}></Route>
               </Routes>
             <Footer />
           </Router>
