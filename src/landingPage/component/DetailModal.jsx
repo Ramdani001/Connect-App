@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 export default function DetailModal(){
+
+    const [modalDetail, setModalDetail] = useState(false);
+
+    useEffect(() => {
+        console.log(modalDetail);
+    }, [modalDetail]);
+
     return(
-        <section className="fixed h-screen w-full bg-gray-500/70 top-0 left-0 right-0 bottom-0 overflow-hidden" style={{zIndex: 100}}>
+        <section className={modalDetail ? "hidden bg-red-500" : "fixed h-screen w-full bg-gray-500/70 top-0 left-0 right-0 bottom-0 overflow-hidden"} style={{zIndex: 100}}>
             <main className="p-10 grid place-items-center h-full">
                 <div className="borde w-2/3 h-full p-5 bg-white rounded-sm shadow">
                     <div className="closeSection text-2xl font-semibold flex justify-end mr-3">
-                        <span>X</span>
+                        <button onClick={() => setModalDetail(!modalDetail)} className="cursor-pointer">X</button>
                     </div>
 
                     <div className="grid grid-flow-col-dense gap-3 place-items-center h-full w-full">

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link }  from 'react-router-dom';
 
 import Video from './component/Video';
-import DetailModal from "./component/DetailModal";
 
 export default function Gallery(props){
 
@@ -68,7 +67,7 @@ export default function Gallery(props){
 
     return (
         <div className="my-5 pt-20 h-full w-full bg-[url('images/bgAbout.png')] bg-no-repeat bg-top-4 bg-fixed ">
-            <DetailModal />
+            
             <div className="px-2">
                 <h1 className="text-3xl font-semibold underline underline-offset-8 decoration-wavy decoration-[#1a4f5c] text-[#1a4f5c]">Gallery Ads Video</h1>
                 
