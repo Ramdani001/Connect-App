@@ -23,7 +23,7 @@ function Navbar() {
                         <h2>M</h2>
                     </div> 
                 </Link>
-                <ul className={showNav ? "opacity-1 transition-all duration-1000 ease-in flex flex-col text-left gap-3 md:text-center md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0" : "hidden md:text-center md:flex md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0"}>
+                <ul className={showNav ? "opacity-1 transition-all duration-1000 ease-in flex flex-col text-left gap-3 md:text-center md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0" : "hidden md:text-center md:flex md:flex-row md:gap-0 md:justify-around order-3 md:order-1 p-2  border-b-2 md:border-none md:pl-0 h-0"}>
                     <Link to="/" onClick={() => {
                             window.scrollTo(0, 0);
                         }}
@@ -54,7 +54,9 @@ function Navbar() {
                             </Link> 
                             <hr className="my-3" />
                             <div className="p-1">
-                                <h4>Logout</h4>
+                                <Link to="/login">
+                                    <h4>Logout</h4>
+                                </Link> 
                             </div>
                         </section>
                     </div>

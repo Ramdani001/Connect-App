@@ -3,6 +3,7 @@ import Loading from './landingPage/component/Loading';
 import Navbar from './landingPage/component/Navbar';
 import Footer from './landingPage/component/Footer';
 import Profile from './landingPage/pages/Profile';
+import Login from './landingPage/sub_component/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
@@ -10,10 +11,10 @@ const LandingPage = lazy(() => import('./landingPage/LandingPage'));
 const Gallery = lazy(() => import('./landingPage/Gallery'));
 
 function App() {
-  return (
+  return ( 
     <>
     {/* <Loading /> */}
-        <Suspense fallback={<Loading />}>
+        {/* <Suspense fallback={<Loading />}> */}
           <Router>
             <Navbar />
               <Routes>
@@ -23,10 +24,11 @@ function App() {
                 <Route path='/instaStory' element={<Gallery type={"instaStory"} />}></Route>
                 <Route path='/videoYoutube' element={<Gallery type={"videoYoutube"} />}></Route>
                 <Route path='/Profile' element={<Profile type={"Profile"} />}></Route>
+                <Route path='/login' element={<Login type={"Login"} />}></Route>
               </Routes>
             <Footer />
           </Router>
-        </Suspense>
+        {/* </Suspense> */}
     </> 
   )
 }
