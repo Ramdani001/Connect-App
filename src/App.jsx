@@ -14,7 +14,7 @@ function App() {
   return ( 
     <>
     {/* <Loading /> */}
-        {/* <Suspense fallback={<Loading />}> */}
+        <Suspense fallback={<Loading />}>
           <Router>
             <Navbar />
               <Routes>
@@ -28,7 +28,7 @@ function App() {
               </Routes>
             <Footer />
           </Router>
-        {/* </Suspense> */}
+        </Suspense>
     </> 
   )
 }

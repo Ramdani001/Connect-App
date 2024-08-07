@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Identitas from '../sub_component/Identitas';
-import History from '../sub_component/History';
-import { Link }  from 'react-router-dom';
+import History from '../sub_component/History'; 
 
 export default function Profile() {
 
@@ -26,9 +24,9 @@ export default function Profile() {
 
 
                         </div>  
-                            <button className="bg-blue-300" onClick={e => setShowContent("Identitas")}>Identitas</button>
+                            <button className={showContent == "Identitas" ? "py-1 w-full px-4 transition-all duration-500 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("Identitas")}>Identitas</button>
                             <br />
-                            <button className="bg-red-300" onClick={e => setShowContent("History")}>History</button>
+                            <button className={ showContent == "History" ? "py-1 w-full transition-all duration-500 px-4 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("History")}>History</button>
                     </div>
                 </div>
             </aside>
