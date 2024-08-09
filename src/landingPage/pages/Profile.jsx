@@ -21,10 +21,12 @@ export default function Profile() {
                                 </h2> 
                                 <label className="text-slate-400 cursor-pointer"> Ubah profile <i class="fa-solid fa-pencil"></i></label>    
                             </div>
-
+ 
 
                         </div>  
-                            <button className={showContent == "Identitas" ? "py-1 w-full px-4 transition-all duration-500 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("Identitas")}>Identitas</button>
+                            <button className={showContent == "Identitas" ? "py-1 w-full px-4 transition-all duration-500 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("Identitas")}>Identity</button>
+                            <br />
+                            <button className={ showContent == "History" ? "py-1 w-full transition-all duration-500 px-4 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("History")}>Transaction History</button>
                             <br />
                             <button className={ showContent == "History" ? "py-1 w-full transition-all duration-500 px-4 m-2 rounded bg-[transparent] border-y-2 border-blue-400" : "py-1 w-full px-4 m-2 rounded bg-[transparent]"} onClick={e => setShowContent("History")}>History</button>
                     </div>

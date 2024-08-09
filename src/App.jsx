@@ -1,7 +1,5 @@
 import React, {  Suspense } from 'react';
 import Loading from './landingPage/component/Loading';
-import Navbar from './landingPage/component/Navbar';
-import Footer from './landingPage/component/Footer';
 import Profile from './landingPage/pages/Profile';
 import Login from './landingPage/sub_component/Login';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -11,12 +9,12 @@ const LandingPage = lazy(() => import('./landingPage/LandingPage'));
 const Gallery = lazy(() => import('./landingPage/Gallery'));
 
 function App() {
-  return ( 
+  return (  
     <>
     {/* <Loading /> */}
         <Suspense fallback={<Loading />}>
           <Router>
-            <Navbar />
+            
               <Routes>
                 <Route path='/' element={<LandingPage />}></Route>
                 <Route path='/Gallery' element={<Gallery type={"allProduk"} />}></Route>
@@ -26,7 +24,7 @@ function App() {
                 <Route path='/Profile' element={<Profile type={"Profile"} />}></Route>
                 <Route path='/login' element={<Login type={"Login"} />}></Route>
               </Routes>
-            <Footer />
+            
           </Router>
         </Suspense>
     </> 

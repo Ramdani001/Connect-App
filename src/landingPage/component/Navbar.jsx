@@ -32,10 +32,10 @@ function Navbar() {
                         Home
                     </Link>
                     <Link to="/Gallery">
-                         Ads Video
+                         Product
                     </Link>
                     <Link to="/Gallery"> 
-                         Video Services
+                         About Me
                     </Link>
                 </ul>
                 <div id="profile" className={showNav ? "order-4 md:order-3 p-2 md:pl-0" : "hidden md:block md:order-3 p-2 md:pl-0"}>

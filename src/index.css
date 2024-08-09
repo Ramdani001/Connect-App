@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+      font-family: 'olive';
+      src: url(../public/olive_days/Olive\ Days.ttf);
+    }
+
+    @font-face {
+      font-family: 'poppins-light';
+      src: url(../public/Poppins/Poppins-Light.ttf);
+    }
+  }
+
+.font-olive{
+    font-family: olive;
+}
+.font-popins{
+    font-family: poppins-light;
+}
+
 .cardServices::before{
     content: "";
     width: 100%;

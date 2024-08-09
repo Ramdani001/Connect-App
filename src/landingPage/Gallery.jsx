@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link }  from 'react-router-dom';
 
 import Video from './component/Video';
+import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 export default function Gallery(props){
 
@@ -66,6 +68,8 @@ export default function Gallery(props){
  
 
     return (
+        <>
+        <Navbar />
         <div className="my-5 pt-20 h-full w-full bg-[url('images/bgAbout.png')] bg-no-repeat bg-top-4 bg-fixed ">
             
             <div className="px-2">
@@ -84,7 +88,8 @@ export default function Gallery(props){
                     {mappingData}
                     {/* {sendData} */}
                 </div>
-            
         </div>
+        <Footer />
+        </>
     )
 };
