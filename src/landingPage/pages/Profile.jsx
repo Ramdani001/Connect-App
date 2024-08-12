@@ -2,17 +2,21 @@ import React, {useState} from "react";
 import Identitas from '../sub_component/Identitas';
 import History from '../sub_component/History'; 
 
+import Navbar from "../component/Navbar";
+import Footer from "../component/Footer";
 export default function Profile() {
 
     const [showContent, setShowContent] = useState("Identitas");
 
-    return(
-        <main className="flex justify-between my-5 pt-20 h-screen w-full p-10 bg-slate-200">
-            <aside className="border-red-400 border h-full w-1/3 p-10">
-                <div>
+    return( 
+        <>
+        <Navbar />
+            <main className="flex justify-between mt-10 pt-10 h-screen w-full h-[100vh] p-10 bg-slate-200 bg-[url('images/bg_profile.jpg')] bg-cover">
+            <aside className="border bg-white rounded-md shadow-md h-full w-1/3 p-10 ">
+                <div className="h-full">
                     <div className="header">
                         <div className="flex items-center">
-                            <div className="bg-yellow-300 rounded-full w-16 h-16 border">
+                            <div className="rounded-full w-16 h-16 border bg-yellow-400">
 
                             </div>
                             <div className="ml-3 ">
@@ -32,10 +36,12 @@ export default function Profile() {
                     </div>
                 </div>
             </aside>
-            <section className="border-blue-400 border h-full w-full p-2">
+            <section className="border-blue-400 h-full w-full p-2">
                 { showContent === "Identitas" ? <Identitas /> : <History /> }
                 
             </section>
-        </main>
+            </main>
+            {/* <Footer /> */}
+        </>
     )
 }
