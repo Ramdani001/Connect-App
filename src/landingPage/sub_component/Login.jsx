@@ -1,8 +1,66 @@
 import React, { useEffect, useState } from "react";
 import { Link }  from 'react-router-dom';
+import axios from 'axios';
 
 
 export default function Login(props){
+
+
+    const getUsers = async () => {
+        try {
+            // Melakukan permintaan GET ke endpoint
+            const response = await axios.get('http://localhost:3000/api/v1/users/');
+    
+            // Mencetak data respons
+            console.log('Data:', response.data);
+        } catch (error) {
+            
+            if (error.response) {
+                
+                console.error('Response error:', error.response.status);
+                console.error('Response data:', error.response.data);
+            } else if (error.request) {
+                
+                console.error('Request error:', error.request);
+            } else {
+                
+                console.error('Error:', error.message);
+            }
+        }
+    };
+
+    // Fungsi untuk menambahkan data pengguna
+    const addUser = async (userData) => {
+        try {
+            // Melakukan permintaan POST ke endpoint
+            const response = await axios.post('http://localhost:3000/api/v1/users/regist', userData);
+            
+            // Mencetak data respons
+            console.log('User added:', response.data);
+        } catch (error) {
+            if (error.response) {
+                console.error('Response error:', error.response.status);
+                console.error('Response data:', error.response.data);
+            
+            } else {
+                console.error('Error:', error.message);
+            }
+        }
+    };
+
+    // Contoh pemanggilan fungsi
+    const datas = {
+            "email": "uio@gmail.com",
+            "password": "234",
+            "created_at": "2024-08-30",
+            "updated_at": "2024-08-20"
+        }
+
+    const add = () =>{
+        addUser(datas);
+        // console.log(datas);
+    }
+
 
     const [showForm, setShowForm] = useState(true);
 
@@ -84,7 +142,7 @@ export default function Login(props){
                                         <input type="text" className="py-3 shadow-md px-2 rounded-md w-[50%]" placeholder="Password" />
                                     </div>
                                     <div className="w-full flex justify-center mt-3">
-                                        <button className="py-3 px-5 w-[50%] rounded-md shadow-md bg-orange-400 text-white">Sign In</button>
+                                        <button onClick={getUsers} className="py-3 px-5 w-[50%] rounded-md shadow-md bg-orange-400 text-white">Sign In</button>
                                     </div>
                                 </div>
 
@@ -117,7 +175,7 @@ export default function Login(props){
                                             </div>
                                         </div>
                                         <div className="w-full flex justify-center mt-3">
-                                            <button className="py-3 px-5 w-[60%] rounded-md shadow-md bg-orange-400 text-white">Sign Up</button>
+                                            <button onClick={add} className="py-3 px-5 w-[60%] rounded-md shadow-md bg-orange-400 text-white">Sign Up</button>
                                         </div>
                                     </div>
                                 </form>
