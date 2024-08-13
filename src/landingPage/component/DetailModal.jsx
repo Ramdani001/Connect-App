@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-export default function DetailModal(){
+export default function DetailModal(props){
+    const {key, no, nama, type, price, ket, url} = props;
 
     const [modalDetail, setModalDetail] = useState(false);
 
@@ -19,21 +20,21 @@ export default function DetailModal(){
 
                     <div className="grid grid-flow-col-dense gap-3 place-items-center h-full w-full">
                         <div className="content w-full h-2/4 rounded-sm">
-                            <iframe src="https://www.youtube.com/embed/3OjboZ5esog?si=FVuu37_7Svd0PMYF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen className="md:w-96 md:h-full"></iframe>
+                            <iframe src={url} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen className="md:w-96 md:h-full"></iframe>
                         </div>
     
                         <div className="textContent col w-full h-2/3 col-span-1">
                             <div>
                                 <label className="text-slate-400">Title</label>
-                                <h2 className="font-bold text-xl">Branding Chicken</h2>
+                                <h2 className="font-bold text-xl">{nama}</h2>
                             </div>
                             <div>
                                 <label className="text-slate-400">Type</label>
-                                <h2 className="text-md">Ads Video</h2>
+                                <h2 className="text-md">{type}</h2>
                             </div>
                             <div className="">
                                 <label className="text-slate-400">Summary</label>
-                                <h2 className=""> dolor sit amet consectetur, adipisicing elit. Quaerat ea non similique dolorum dicta ipsum et temporibus quae ducimus illum, assumenda porro. Est facere, iusto tempore voluptatum nulla illum asperiores obcaecati, numquam laudantium dolor omnis dolorum? Quaerat molestiae adipisci Lorem ipsumeos!</h2>
+                                <h2 className=""> {ket}</h2>
                             </div>
                             <div className="mt-3 flex gap-3">
                                 <button className="border border-blue-400 rounded shadow-md font-semibold p-1 w-full">

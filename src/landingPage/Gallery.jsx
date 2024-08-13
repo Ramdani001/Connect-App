@@ -4,35 +4,35 @@ import { Link }  from 'react-router-dom';
 import Video from './component/Video';
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
+import axios from 'axios';
 
 export default function Gallery(props){
 
-    const data = [
-        {
-            "no": 1,
-            "nama": "Rizkan Ramdani"
-        },
-        {
-            "no": 2,
-            "nama": "Ramdani"
-        },
-        {
-            "no": 3,
-            "nama": "Rizkan"
-        },
-        {
-            "no": 3,
-            "nama": "Rizkan"
-        },
-        {
-            "no": 3,
-            "nama": "Rizkan"
-        },
-        {
-            "no": 3,
-            "nama": "Rizkan"
-        },
-    ]
+    const [arrData, setArrData] = useState([]);
+    const [url, setUrl] = useState('http://localhost:3000/api/v1/products');
+
+    const getProduct = async () => {
+        try {
+            const response = await axios.get(url);
+    
+            setArrData(response.data);
+            console.log('Data:', typeof(response.data));
+
+        } catch (error) {
+            
+            if (error.response) {
+                
+                console.error('Response error:', error.response.status);
+                console.error('Response data:', error.response.data);
+            } else if (error.request) {
+                
+                console.error('Request error:', error.request);
+            } else {
+                
+                console.error('Error:', error.message);
+            }
+        }
+    };
     
     const data2 = [
         {
@@ -54,16 +54,17 @@ export default function Gallery(props){
     let [sendData, setSendData] = useState([]);
 
     useEffect(() => {
+        getProduct();
         if(type == "allProduk"){
-            setSendData(data);
+            setSendData(arrData);
         }else if(type == "videoFacebook"){
-            setSendData(data2);
+            setSendData(arrData);
         }
         console.log(sendData);
     }, [type]);
-    
-    const mappingData = sendData.map((dat => {
-        return <Video key={dat.key} no={dat.no} nama={dat.nama} />
+     
+    const mappingData = arrData.map((dat => {
+        return <Video key={dat.key} no={dat.id_product} nama={dat.name_product} type={dat.type} price={dat.price} ket={dat.information}  url={dat.url}/>
     }))
  
 

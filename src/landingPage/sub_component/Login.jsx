@@ -4,29 +4,6 @@ import bcrypt from 'bcryptjs'
 import { format } from 'date-fns';
 
 export default function Login(props){
-
-    const getUsers = async () => {
-        try {
-            const response = await axios.get('http://localhost:3000/api/v1/users/');
-    
-            console.log('Data:', response.data);
-
-        } catch (error) {
-            
-            if (error.response) {
-                
-                console.error('Response error:', error.response.status);
-                console.error('Response data:', error.response.data);
-            } else if (error.request) {
-                
-                console.error('Request error:', error.request);
-            } else {
-                
-                console.error('Error:', error.message);
-            }
-        }
-    };
-
     const addUser = async (userData) => {
         try {
 
@@ -34,18 +11,20 @@ export default function Login(props){
             
             if(response.status == 200){
                 setShowAlert(true);
-
-                sessionStorage.setItem("email", userData.email);
-
-                const timer = setTimeout(() => {
-                    window.location.href = '/login';
-                }, 3000);
+                // if(response_per == 200){
+                    sessionStorage.setItem("id_user", userData.id_user);
+                    const timer = setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 3000);
+                // }
 
             }
             console.log('User added:', response.status);
         } catch (error) {
-            if(error.response.status == 300){
-                setshowAlertWar(true);
+            if(error.response){
+                if(error.response.status == 300){
+                    setshowAlertWar(true);
+                }
             }
             if (error.response) {
                 console.error('Response errora:', error.response.status);
@@ -69,6 +48,9 @@ export default function Login(props){
           email: '',
           username: '',
           tipe: 2, 
+          nama: '',
+          no_telp: '',
+          alamat: '',
           password: '',
           created_at: format(currentDate, 'yyyy-MM-dd'),
           updated_at: format(currentDate, 'yyyy-MM-dd'),
