@@ -2,6 +2,7 @@ import React, {  Suspense } from 'react';
 import Loading from './landingPage/component/Loading';
 import Profile from './landingPage/pages/Profile';
 import Login from './landingPage/sub_component/Login';
+import Admin from './admin/Main';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/videoYoutube' element={<Gallery type={"videoYoutube"} />}></Route>
                 <Route path='/Profile' element={<Profile type={"Profile"} />}></Route>
                 <Route path='/login' element={<Login type={"Login"} />}></Route>
+                <Route path='/admin' element={<Admin type={"Admin"} />}></Route>
               </Routes>
             
           </Router>
