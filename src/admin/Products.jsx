@@ -88,6 +88,49 @@ export default function Products(props){
                         ))}
                     </tbody>
                 </table>
+
+                {/* Modal add product */}
+                <div className="absolute w-full h-full left-0 bg-gray-700/50 top-0 flex justify-center items-center
+                ">
+
+                    <div className="overflow-y-auto h-[calc(100%-3rem)] scrollbar-blue-400">
+                        <div className="bg-white shadow-md rounded-md p-5">
+                            <div className="flex justify-between">
+                                <h2 className="font-olive p-3">Tambah Product</h2>
+                                <button className="font-olive p-3">X</button>
+                            </div>
+                            <hr />
+
+                            <div className="p-5 overflow-y-auto h-[calc(100%-3rem)]">
+
+                                {/* Title */}
+                                <div className="rounded-md p-4 rounded-md shadow-md border-2 w-full h-full">
+                                    <label className="text-sm">Judul (Wajib isi)</label> <br />
+                                    <textarea className="w-full p-3 text-sm" name="title" id="title" placeholder="Tambahkan judul yang menjelaskan video anda"></textarea>
+                                </div>
+                                {/* Title */}
+
+                                {/* Deskription */}
+                                <div className="rounded-md mt-3 p-4 rounded-md shadow-md border-2 w-full h-full">
+                                    <label className="text-sm">Description</label> <br />
+                                    <textarea rows={5} className="w-full p-3 text-sm" name="description" id="description" placeholder="Beritahu penonton tentang video anda"></textarea>
+                                </div>
+                                {/* Deskription */}
+
+                                {/* Thumbnail */}
+                                <div className="rounded-md mt-3 p-4 rounded-md shadow-md border-2 w-full h-full">
+                                    <label className="text-sm">Thumbnail</label> <br />
+                                    <label className="text-xs">Gunakan thumbnail yang menarik dan memikat perhatian penonton</label> <br />
+                                    <input type="file" />
+                                </div>
+                                {/* Thumbnail */}
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     )
