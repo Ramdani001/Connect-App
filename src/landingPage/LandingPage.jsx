@@ -15,9 +15,9 @@ export default function Main() {
     const [userEmail, setUserEmail] = useState("");
 
     // Memeriksa apakah item tidak ada
-    if (sess === null) {
-        window.location.href = '/login';
-    }
+    // if (sess === null) {
+    //     window.location.href = '/login';
+    // }
 
  
     return (
