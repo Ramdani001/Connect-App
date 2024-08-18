@@ -4,13 +4,18 @@ export default function Users(props){
 
     const [arrData, setArrData] = useState([]);
     const [url, setUrl] = useState('http://localhost:3000/api/v1/users/');
-
+    const [loadingShow, setLoadingShow] = useState(false);
     const getUsers = async () => {
         try {
             const response = await axios.get(url);
     
             setArrData(response.data);
             console.log('Data:', typeof(response.data));
+            setArrData(response.data);
+            setTimeout(() => {
+                setLoadingShow(!loadingShow);
+              }, 2000);
+            
 
         } catch (error) {
             
@@ -62,6 +67,11 @@ export default function Users(props){
     return(
         <>
             <div className="p-5 bg-white m-2 w-full shdaow-md rounded-md">
+
+                <div className={loadingShow ? "hidden" : "absolute top-0 border flex items-center justify-center left-0 w-screen bg-black/30 h-full"}>
+                    <img src="images/lo-unscreen.gif"  alt="" />
+                </div>
+
                 <h1>Halaman Users</h1>
 
                 {/* Table */}

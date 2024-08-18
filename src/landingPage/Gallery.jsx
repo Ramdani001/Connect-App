@@ -64,14 +64,14 @@ export default function Gallery(props){
     }, [type]);
      
     const mappingData = arrData.map((dat => {
-        return <Video key={dat.key} no={dat.id_product} nama={dat.name_product} type={dat.type} price={dat.price} ket={dat.information}  url={dat.url} thumbnail={dat.thumbnail}/>
-    }))
+        return <Video key={dat.key} no={dat.id_product} nama={dat.title} type={dat.type} price={dat.price} ket={dat.descriptionx}  url={dat.url} thumbnail={dat.file}/>
+    })) 
  
 
     return (
         <>
         <Navbar />
-        <div className="my-5 pt-20 h-full w-full bg-[url('images/bgAbout.png')] bg-no-repeat bg-top-4 bg-fixed ">
+        <div className="my-5 pt-20 h-full w-full bg-[url('images/bgAbout.png')] bg-no-repeat bg-top-4 ">
             
             <div className="px-2">
                 <h1 className="text-3xl font-semibold underline underline-offset-8 decoration-wavy decoration-[#1a4f5c] text-[#1a4f5c]">Gallery Ads Video</h1>

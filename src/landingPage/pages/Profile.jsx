@@ -7,7 +7,7 @@ import Footer from "../component/Footer";
 export default function Profile() {
 
     const [showContent, setShowContent] = useState("Identitas");
-
+ 
     return( 
         <>
         <Navbar />
