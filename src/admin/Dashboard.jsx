@@ -54,26 +54,6 @@ export default function Dashboard(props){
         }
     ]
 
-    const data = [
-        {
-            "id_trans": 1,
-            "nama": "Yossandi",
-            "id_product": 19
-        },
-        {
-            id: 2, 
-            id_trans: "TRN-001",
-            nama: "RAmdani",
-            id_product: "JKL88"
-        },
-        {
-            id: 3, 
-            id_trans: "TRN-001",
-            nama: "RAmdani",
-            id_product: "JKL88"
-        }
-    ]
-
     createTheme('solarized', {
         text: {
           primary: '#268bd2',

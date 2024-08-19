@@ -5,13 +5,14 @@ import AdminMessages from "./AdminMessages";
 
 export default function Messages(props){
     const [arrData, setArrData] = useState([]);
+    const [arrMess, setArrMess] = useState([]);
     const [statCheck, setStatCheck] = useState(0);
 
 
     const getMessages = async () => {
         try {
             const response = await axios.get("http://localhost:3000/api/v1/messages");
-    
+     
             setArrData(response.data);
 
         } catch (error) {
@@ -30,15 +31,23 @@ export default function Messages(props){
         }
     }; 
 
+    const [idSend, setIdSend] = useState();
+
     const handleMess = async(e) => {
         const itemId = e.currentTarget.getAttribute('data-id');
         console.log(itemId);
-
+        setArrMess([]);
         try {
             const response = await axios.get(`http://localhost:3000/api/v1/messages/stat/${itemId}`);
-    
+            
             if(response){
                 setStatCheck(!statCheck);
+                
+                const res = await axios.get(`http://localhost:3000/api/v1/messages/mess/${itemId}`);
+                setArrMess(res.data);
+                await setIdSend(itemId);
+                
+                await console.log(idSend);
             }
 
         } catch (error) {
@@ -56,11 +65,64 @@ export default function Messages(props){
             }
         }
     }
+
+    const [formData, setFormData] = useState({
+        id_user: 1,
+    });
+     
+      const changeMess = (e) => {
+        const { name, value } = e.target;
+
+        setFormData(prevState => ({
+          ...prevState,
+          [name]: value,
+        }));
+
+    };
+
+    const handleMessage = async (e) => {
+
+        const id_m = e.currentTarget.getAttribute('data-id');
+        
+        const updatedFormData = {
+            ...formData,
+            id_m: id_m
+        };
+        try {
+            const response = await axios.post(`http://localhost:3000/api/v1/messages/insert/`, updatedFormData);
+            
+            if(response){
+                const res = await axios.get(`http://localhost:3000/api/v1/messages/mess/${id_m}`);
+                setArrMess(res.data);
+            }
+
+        } catch (error) {
+            
+            if (error.response) {
+                
+                console.error('Response error:', error.response.status);
+                console.error('Response data:', error.response.data);
+            } else if (error.request) {
+                
+                console.error('Request error:', error.request);
+            } else {
+                
+                console.error('Error:', error.message);
+            }
+        }
+
+        console.log(updatedFormData);
+    }
     
     useEffect(() => {
         getMessages();
         console.log("Clicked");
     }, [statCheck]);
+
+    setTimeout(() => {
+        getMessages();
+      }, 2000);
+
     return(
         <>
             <div className="w-full h-full bg-white flex gap-3">
@@ -78,14 +140,22 @@ export default function Messages(props){
 
                 <div className="w-full h-[330px] bg-gray-400/20 p-3 flex flex-col">
                     <div className="flex-1 overflow-auto">
-                        <Submessages />
-                        <AdminMessages />
-                        <Submessages />
-                        <AdminMessages />
+                        {/* <div className="w-full h-full border p-2 text-center">
+                            <h3 className="">
+                                No Message
+                            </h3>
+                        </div> */}
+                        {arrMess.map((item, index) => (
+                            item.id_user !== 1 ? <Submessages key={index} name={item.head_mess} message={item.send_mess} /> : <AdminMessages key={index} name={item.head_mess} message={item.send_mess} />
+                        ))}
+
                     </div>
 
-                    <div className="bg-white w-full h-[50px]">
-                        
+                    <div className="bg-white w-full h-[50px] mt-3 border">
+                        <form method="POST" className="flex w-full h-full gap-1 items-center justify-center">
+                            <input type="text" placeholder="Text your message" className="p-2 w-full" name="send_mess" id="send_mess" onKeyUp={changeMess}/>
+                            <button className="bg-gray-300 p-2 h-full" type="button" data-id={idSend} onClick={handleMessage}> SEND </button>
+                        </form>
                     </div>
                 </div>
 
