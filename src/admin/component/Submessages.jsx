@@ -7,7 +7,7 @@ export default function Submessages(props){
 
     return(
         <>
-            <div className="w-full mt-2 bg-white p-2 bottom-0">
+            <div className="w-full mt-2 bg-white p-2">
                 <h6 className="font-olive">{name}</h6>
                 <p>
                     {message}

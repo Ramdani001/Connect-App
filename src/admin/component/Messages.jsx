@@ -89,7 +89,7 @@ export default function Messages(props){
             id_m: id_m
         };
         try {
-            const response = await axios.post(`http://localhost:3000/api/v1/messages/insert/`, updatedFormData);
+            const response = await axios.post(`http://localhost:3000/api/v1/messages/insert/cust/`, updatedFormData);
             
             if(response){
                 const res = await axios.get(`http://localhost:3000/api/v1/messages/mess/${id_m}`);
