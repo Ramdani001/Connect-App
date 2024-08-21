@@ -3,18 +3,31 @@ import { Link }  from 'react-router-dom';
 import Submessages from "../../admin/component/Submessages";
 import AdminMessages from "../../admin/component/AdminMessages";
 import axios from 'axios';
-
+ 
 export default function History(props){
     const [arrData, setArrData] = useState([]);
     const [arrMess, setArrMess] = useState([]);
     const [statCheck, setStatCheck] = useState(0);
 
+    const [idSend, setIdSend] = useState();
+
+    const [id_user, setId_user] = useState(0);
 
     const getMessages = async () => {
+        const id = localStorage.getItem("id_user");
+        setId_user(id);
+        console.log(id_user);
         try {
-            const response = await axios.get("http://localhost:3000/api/v1/messages");
+            const res = await axios.get(`http://localhost:3000/api/v1/messages/custSess/${id_user}`);
+            // setArrMess(res.data);
+            // await setIdSend(res.data);
      
-            setArrData(response.data);
+            setArrMess(res.data);
+
+            if (res.data.length > 0) {
+                setIdSend(res.data[0].id_m);
+            }
+            
 
         } catch (error) {
             
@@ -32,43 +45,8 @@ export default function History(props){
         }
     }; 
 
-    const [idSend, setIdSend] = useState();
-
-    const handleMess = async(e) => {
-        const itemId = e.currentTarget.getAttribute('data-id');
-        console.log(itemId);
-        setArrMess([]);
-        try {
-            const response = await axios.get(`http://localhost:3000/api/v1/messages/stat/${itemId}`);
-            
-            if(response){
-                setStatCheck(!statCheck);
-                
-                const res = await axios.get(`http://localhost:3000/api/v1/messages/mess/${itemId}`);
-                setArrMess(res.data);
-                await setIdSend(itemId);
-                
-                await console.log(idSend);
-            }
-
-        } catch (error) {
-            
-            if (error.response) {
-                
-                console.error('Response error:', error.response.status);
-                console.error('Response data:', error.response.data);
-            } else if (error.request) {
-                
-                console.error('Request error:', error.request);
-            } else {
-                
-                console.error('Error:', error.message);
-            }
-        }
-    }
-
     const [formData, setFormData] = useState({
-        id_user: 1,
+        id_user: id_user,
     });
      
       const changeMess = (e) => {
@@ -87,7 +65,8 @@ export default function History(props){
         
         const updatedFormData = {
             ...formData,
-            id_m: id_m
+            id_m: id_m,
+            id_user: id_user
         };
         try {
             const response = await axios.post(`http://localhost:3000/api/v1/messages/insert/`, updatedFormData);
@@ -95,6 +74,8 @@ export default function History(props){
             if(response){
                 const res = await axios.get(`http://localhost:3000/api/v1/messages/mess/${id_m}`);
                 setArrMess(res.data);
+                document.getElementById("send_mess").value = "";
+
             }
 
         } catch (error) {
@@ -120,33 +101,24 @@ export default function History(props){
         console.log("Clicked");
     }, [statCheck]);
 
-    setTimeout(() => {
+    useEffect(() => {
         getMessages();
-      }, 2000);
+        if(!arrMess){
+            setTimeout(() => {
+                getMessages();
+            }, 5000);
+        }
+    }, [arrMess]);
+
+ 
 
     return (
         <div >
             <div className="w-full h-full bg-white flex gap-3">
-                
-                <div className="w-[25%] p-3 h-full bg-light border grid gap-3">
-                    {arrData.map((item, index) => ( 
-                        <div className="border p-2 relative flex" data-id={item.id_m} 
-                        onClick={handleMess}>
-                            <span name={item.id_m} className={item.stat == 1 ? "bg-blue-400/50 w-[20px] h-[20px] rounded-full absolute -mt-3 ml-44" : "hidden"}></span>
-                            <h6>{item.nama}</h6>
-                            <hr />
-                        </div>
-                    ))}
-                </div>
 
                 <div className="w-full h-[86vh] bg-gray-400/20 p-3 flex flex-col">
                     <div className="flex-1 overflow-auto">
-                        {/* <div className="w-full h-full border p-2 text-center">
-                            <h3 className="">
-                                No Message
-                            </h3>
-                        </div> */}
-                        {arrMess.map((item, index) => (
+                        {arrMess.slice().reverse().map((item, index) => (
                             item.id_user !== 1 ? <Submessages key={index} name={item.head_mess} message={item.send_mess} /> : <AdminMessages key={index} name={item.head_mess} message={item.send_mess} />
                         ))}
 

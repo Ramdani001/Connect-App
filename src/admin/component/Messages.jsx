@@ -139,12 +139,7 @@ export default function Messages(props){
                 </div>
 
                 <div className="w-full h-[330px] bg-gray-400/20 p-3 flex flex-col">
-                    <div className="flex-1 overflow-auto">
-                        {/* <div className="w-full h-full border p-2 text-center">
-                            <h3 className="">
-                                No Message
-                            </h3>
-                        </div> */}
+                <div className="flex-1 overflow-auto">
                         {arrMess.map((item, index) => (
                             item.id_user !== 1 ? <Submessages key={index} name={item.head_mess} message={item.send_mess} /> : <AdminMessages key={index} name={item.head_mess} message={item.send_mess} />
                         ))}
